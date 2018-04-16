@@ -838,6 +838,18 @@ parentViewController:(UIViewController*)parentViewController
     overlayView.autoresizesSubviews = YES;
     overlayView.autoresizingMask    = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     overlayView.opaque              = NO;
+    
+    //addtional UI on overlay view
+    UIView* viewDesc = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.view.bounds.size.width, 80)];
+    viewDesc.backgroundColor = [UIColor whiteColor];
+
+    UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
+    descLabel.backgroundColor = [UIColor clearColor];
+    descLabel.textAlignment = NSTextAlignmentCenter;
+    descLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:24];
+    descLabel.numberOfLines = 0;
+    descLabel.text = @"Scan your QR code on your badge to checkout";
+    
 
     self.toolbar = [[UIToolbar alloc] init];
     self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
