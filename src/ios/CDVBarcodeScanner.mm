@@ -840,15 +840,37 @@ parentViewController:(UIViewController*)parentViewController
     overlayView.opaque              = NO;
     
     //addtional UI on overlay view
-    UIView* viewDesc = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.view.bounds.size.width, 80)];
+    UIView* viewDesc = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.view.bounds.size.width, 170)];
     viewDesc.backgroundColor = [UIColor whiteColor];
+    
+    UIImage * imgBadge = [UIImage imageNamed: @"./www/assets/img/badge.png"];
+    UIImageView * viewBadge = [[UIImageView alloc] initWithImage: imgBadge];
+    viewBadge.frame = CGRectMake(80, 10, 200, 150);
+    [viewDesc addSubview: viewBadge];
+    
+    
+    UIView* viewDescTxt = [[UIView alloc] initWithFrame:CGRectMake(300, 30, UIViewContentModeScaleToFill, 170)];
+    viewDescTxt.backgroundColor = [UIColor purpleColor];
+    [viewDesc addSubview: viewDescTxt];
 
-    UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
-    descLabel.backgroundColor = [UIColor clearColor];
-    descLabel.textAlignment = NSTextAlignmentCenter;
-    descLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:24];
-    descLabel.numberOfLines = 0;
-    descLabel.text = @"Scan your QR code on your badge to checkout";
+    UILabel *descLabelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 500, 25)];
+    descLabelTitle.backgroundColor = [UIColor clearColor];
+    //descLabelTitle.textAlignment = NSTextAlignmentCenter;
+    descLabelTitle.font = [UIFont fontWithName:@"Arial-BoldMT" size:24];
+    descLabelTitle.numberOfLines = 0;
+    descLabelTitle.text = @"Thank you for visiting Verizon!";
+    
+    UILabel *descLabelSub = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, 500, 60)];
+    descLabelSub.backgroundColor = [UIColor clearColor];
+    descLabelSub.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
+    descLabelSub.numberOfLines = 0;
+    descLabelSub.lineBreakMode = NSLineBreakByWordWrapping;
+    descLabelSub.text = @"To check-out please scan the QR code from your badge.";
+
+    [overlayView addSubview: viewDesc];
+    [viewDescTxt addSubview: descLabelTitle];
+    [viewDescTxt addSubview: descLabelSub];
+
     
 
     self.toolbar = [[UIToolbar alloc] init];
